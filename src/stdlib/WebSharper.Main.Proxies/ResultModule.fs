@@ -24,18 +24,23 @@
      FSharp.Core, Culture=neutral, \
      PublicKeyToken=b03f5f7f11d50a3a">]
 module private WebSharper.ResultModuleProxy
-    
+
 let Bind f r =
     match r with
     | Ok x -> f x
     | Error e -> Error e
-        
+
 let Map f r =
     match r with
     | Ok x -> Ok (f x)
     | Error e -> Error e
-        
+
 let MapError f r =
     match r with
     | Ok x -> Ok x
-    | Error e -> Error (f e)    
+    | Error e -> Error (f e)
+
+let isOk r =
+    match r with
+    | Ok _ -> true
+    | _ -> false

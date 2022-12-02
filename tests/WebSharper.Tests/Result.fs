@@ -57,4 +57,11 @@ let Tests =
             equal (r2 |> Result.bind (fun x -> Ok())) (Error "e")
         }
 
+        Test "isOk" {
+            let r = Ok 3
+            let r2 = Error "e"
+            equal (r |> Result.isOk) true
+            equal (r2 |> Result.isOk) false
+        }
+
     }
